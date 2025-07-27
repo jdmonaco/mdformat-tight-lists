@@ -130,3 +130,10 @@ dmypy.json
 
 # VS Code
 .vscode/
+
+# Test files
+test_manual.py
+debug_indent.py
+
+# uv lock file
+uv.lock

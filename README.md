@@ -1,23 +1,61 @@
-# mdformat-plugin
+# mdformat-tight-lists
 
 [![Build Status][ci-badge]][ci-link]
 [![codecov.io][cov-badge]][cov-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for...
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for creating tight lists (no empty lines between list items).
 
-## Required changes for a new plugin
+## Installation
 
-This demonstration is setup with a plugin named `plugin`.
-There are a number of locations to change.
-At a top level for a plugin `foo` at least the following changes are required
+```bash
+pip install mdformat-tight-lists
+```
 
-- Global find and replace `mdformat_plugin` to `mdformat_foo` including folder names.
-- Global find and replace `mdformat-plugin` to `mdformat-foo` including folder names.
-- `tests/test_fixtures.py`: `output = mdformat.text(text, extensions={"plugin"})` becomes `output = mdformat.text(text, extensions={"foo"})`
-- `pyproject.toml` in addition to the global find and replace: `plugin = "mdformat_plugin"` becomes `foo = "mdformat_foo"`
+or with [pipx](https://pipx.pypa.io/):
 
-Do not forget to update authorship / maintainers in `pyproject.toml` as well.
+```bash
+pipx install mdformat
+pipx inject mdformat mdformat-tight-lists
+```
+
+## Usage
+
+After installation, mdformat will automatically apply tight list formatting to your Markdown files.
+
+### Features
+
+- **Tight Lists**: Removes empty lines between list items with single paragraphs
+- **Loose Lists Preserved**: Multi-paragraph list items maintain proper formatting with blank lines
+- **Smart Detection**: If any item in a list has multiple paragraphs, the entire list uses loose formatting
+- **Marker Preservation**: Different list marker types (e.g., `-` vs `*`) are treated as separate lists
+
+### Examples
+
+**Input:**
+```markdown
+- Item 1
+
+- Item 2
+
+- Item 3
+```
+
+**Output:**
+```markdown
+- Item 1
+- Item 2
+- Item 3
+```
+
+**Multi-paragraph items (loose list preserved):**
+```markdown
+- First item with multiple paragraphs
+
+  Second paragraph of first item
+
+- Second item
+```
 
 ## Development
 
@@ -75,9 +113,9 @@ or trigger the GitHub Action job, by creating a release with a tag equal to the 
 
 Note, this requires generating an API key on PyPi and adding it to the repository `Settings/Secrets`, under the name `PYPI_KEY`.
 
-[ci-badge]: https://github.com/executablebooks/mdformat-plugin/workflows/CI/badge.svg?branch=master
-[ci-link]: https://github.com/executablebooks/mdformat/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush
-[cov-badge]: https://codecov.io/gh/executablebooks/mdformat-plugin/branch/master/graph/badge.svg
-[cov-link]: https://codecov.io/gh/executablebooks/mdformat-plugin
-[pypi-badge]: https://img.shields.io/pypi/v/mdformat-plugin.svg
-[pypi-link]: https://pypi.org/project/mdformat-plugin
+[ci-badge]: https://github.com/jdmonaco/mdformat-tight-lists/workflows/CI/badge.svg?branch=master
+[ci-link]: https://github.com/jdmonaco/mdformat-tight-lists/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush
+[cov-badge]: https://codecov.io/gh/jdmonaco/mdformat-tight-lists/branch/master/graph/badge.svg
+[cov-link]: https://codecov.io/gh/jdmonaco/mdformat-tight-lists
+[pypi-badge]: https://img.shields.io/pypi/v/mdformat-tight-lists.svg
+[pypi-link]: https://pypi.org/project/mdformat-tight-lists
