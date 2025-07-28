@@ -4,7 +4,9 @@
 [![codecov.io][cov-badge]][cov-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for creating tight lists (no empty lines between list items).
+An opinionated [mdformat](https://github.com/executablebooks/mdformat) plugin that aggressively formats lists to be tight (no empty lines between list items).
+
+**Note**: This plugin takes an opinionated stance that most lists should be tight lists. It will convert loose lists (with empty lines between items) to tight lists, which changes the rendered HTML output. The plugin requires mdformat to be run with the `--no-validate` flag to bypass HTML validation checks.
 
 ## Installation
 
@@ -21,14 +23,18 @@ pipx inject mdformat mdformat-tight-lists
 
 ## Usage
 
-After installation, mdformat will automatically apply tight list formatting to your Markdown files.
+After installation, use mdformat with the `--no-validate` flag to apply tight list formatting:
+
+```bash
+mdformat --no-validate your-file.md
+```
 
 ### Features
 
-- **Tight Lists**: Removes empty lines between list items with single paragraphs
-- **Loose Lists Preserved**: Multi-paragraph list items maintain proper formatting with blank lines
-- **Smart Detection**: If any item in a list has multiple paragraphs, the entire list uses loose formatting
-- **Marker Preservation**: Different list marker types (e.g., `-` vs `*`) are treated as separate lists
+- **Aggressive Tight Formatting**: Converts loose lists to tight lists by removing empty lines between list items
+- **Multi-Paragraph Exception**: Only preserves loose formatting when list items contain multiple paragraphs
+- **Opinionated Approach**: Believes most lists should be tight lists - paragraph tags around every list item in HTML is excessive
+- **HTML Semantic Changes**: This plugin intentionally changes HTML output (loose to tight lists), requiring `--no-validate` flag
 
 ### Examples
 
