@@ -23,10 +23,18 @@ pipx inject mdformat mdformat-tight-lists
 
 ## Usage
 
-After installation, use mdformat with the `--no-validate` flag to apply tight list formatting:
+### Shell Command
+
+Since mdformat-tight-lists is an opinionated plugin that greedily converts loose lists to tight lists and potentially changes the semantics of HTML output, mdformat with this plugin installed should be run with the `--no-validate` flag to avoid seeing mdformat's validation errors. 
+
+After installation, use mdformat to apply tight-list formatting to Markdown files:
 
 ```bash
+# Add the option manually
 mdformat --no-validate your-file.md
+
+# Create an alias for persistence
+alias mdformat="mdformat --no-validate"
 ```
 
 ### Features
@@ -125,3 +133,4 @@ Note, this requires generating an API key on PyPi and adding it to the repositor
 [cov-link]: https://codecov.io/gh/jdmonaco/mdformat-tight-lists
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-tight-lists.svg
 [pypi-link]: https://pypi.org/project/mdformat-tight-lists
+
