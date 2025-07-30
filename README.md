@@ -32,7 +32,6 @@ mdformat your-file.md
 - **List Type Detection**: Different top-level markers (`-`, `*`, `+`) are treated as separate lists
 - **Nested List Handling**: Properly handles transitions between ordered and unordered lists
 - **Multi-Paragraph Support**: Preserves loose formatting when list items contain multiple paragraphs
-- **Frontmatter Compatible**: Works seamlessly with YAML frontmatter
 
 ### Examples
 
