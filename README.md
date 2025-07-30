@@ -94,24 +94,6 @@ To add new test cases, edit `tests/fixtures.md` following the existing format:
 - Input markdown (between dots)
 - Expected output (between dots)
 
-## Publishing
-
-This package is automatically published to PyPI when a version tag is pushed:
-
-```bash
-# Update version in mdformat_tight_lists/__init__.py
-# Commit and push changes
-git add -A
-git commit -m "Bump version to X.Y.Z"
-git push
-
-# Create and push a version tag
-git tag vX.Y.Z
-git push origin vX.Y.Z
-```
-
-The GitHub Actions workflow will automatically build and publish to PyPI.
-
 ## License
 
 MIT - see LICENSE file for details.
