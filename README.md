@@ -41,7 +41,6 @@ Since mdformat-tight-lists is an opinionated plugin that greedily converts loose
 - **"Type Safety"**: Formatting preserves empty lines between ordered and unordered list items
 - **Multi-Paragraph Exception**: Enforces loose lists if at least one item contains multiple paragraphs
 - **Opinionated Whitespace**: Use this plugin if you lament the loss of vertical information density and never understood why people wrap all their list items in paragraph tags
-- **HTML Semantic Changes**: This plugin intentionally changes HTML output (loose to tight lists), requiring `--no-validate` flag
 
 ### Examples
 
