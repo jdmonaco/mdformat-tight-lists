@@ -38,7 +38,7 @@ Since mdformat-tight-lists is an opinionated plugin that greedily converts loose
 ### Features
 
 - **Greedy Tight Lists**: Converts loose lists to tight lists by removing empty lines between list items of the same type
-- **"Type Safety"**: Formatting preserves empty lines between ordered and unordered list items
+- **"Type Safety"**: Formatting enforces empty lines between ordered and unordered list items
 - **Multi-Paragraph Exception**: Enforces loose lists if at least one item contains multiple paragraphs
 - **Opinionated Whitespace**: Use this plugin if you lament the loss of vertical information density and never understood why people wrap all their list items in paragraph tags
 
