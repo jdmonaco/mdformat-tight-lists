@@ -4,9 +4,7 @@
 [![codecov.io][cov-badge]][cov-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
-An opinionated [mdformat](https://github.com/executablebooks/mdformat) plugin that aggressively formats lists to be tight (no empty lines between list items).
-
-**Note**: This plugin takes an opinionated stance that most lists should be tight lists. It will convert loose lists (with empty lines between items) to tight lists, which changes the rendered HTML output. The plugin requires mdformat to be run with the `--no-validate` flag to bypass HTML validation checks.
+An opinionated [mdformat](https://github.com/executablebooks/mdformat) plugin that greedily formats lists to be tight (no empty lines between list items).
 
 ## Installation
 
@@ -25,8 +23,6 @@ pipx inject mdformat mdformat-tight-lists
 
 ### Shell Command
 
-Since mdformat-tight-lists is an opinionated plugin that greedily converts loose lists to tight lists and potentially changes the semantics of HTML output, mdformat with this plugin installed should be run with the `--no-validate` flag to avoid seeing mdformat's validation errors. 
-
 After installation, use mdformat to apply tight-list formatting to Markdown files:
 
 ```bash
@@ -37,11 +33,14 @@ mdformat --no-validate your-file.md
 alias mdformat="mdformat --no-validate"
 ```
 
+Since mdformat-tight-lists is an opinionated plugin that greedily converts loose lists to tight lists and potentially changes the semantics of HTML output, mdformat with this plugin installed should be run with the `--no-validate` flag to avoid seeing mdformat's validation errors. 
+
 ### Features
 
-- **Aggressive Tight Formatting**: Converts loose lists to tight lists by removing empty lines between list items
-- **Multi-Paragraph Exception**: Only preserves loose formatting when list items contain multiple paragraphs
-- **Opinionated Approach**: Believes most lists should be tight lists - paragraph tags around every list item in HTML is excessive
+- **Greedy Tight Lists**: Converts loose lists to tight lists by removing empty lines between list items of the same type
+- **"Type Safety"**: Formatting preserves empty lines between ordered and unordered list items
+- **Multi-Paragraph Exception**: Enforces loose lists if at least one item contains multiple paragraphs
+- **Opinionated Whitespace**: Use this plugin if you lament the loss of vertical information density and never understood why people wrap all their list items in paragraph tags
 - **HTML Semantic Changes**: This plugin intentionally changes HTML output (loose to tight lists), requiring `--no-validate` flag
 
 ### Examples
