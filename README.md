@@ -1,10 +1,9 @@
 # mdformat-tight-lists
 
 [![Build Status][ci-badge]][ci-link]
-[![codecov.io][cov-badge]][cov-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
-An opinionated [mdformat](https://github.com/executablebooks/mdformat) plugin that greedily formats lists to be tight (no empty lines between list items).
+An [mdformat](https://github.com/executablebooks/mdformat) plugin that formats Markdown lists to be tight (no empty lines between list items) following mdformat-style rules.
 
 ## Installation
 
@@ -12,7 +11,7 @@ An opinionated [mdformat](https://github.com/executablebooks/mdformat) plugin th
 pip install mdformat-tight-lists
 ```
 
-or with [pipx](https://pipx.pypa.io/):
+Or with [pipx](https://pipx.pypa.io/) for command-line usage:
 
 ```bash
 pipx install mdformat
@@ -21,26 +20,19 @@ pipx inject mdformat mdformat-tight-lists
 
 ## Usage
 
-### Shell Command
-
-After installation, use mdformat to apply tight-list formatting to Markdown files:
+After installation, mdformat will automatically use this plugin when formatting Markdown files:
 
 ```bash
-# Add the option manually
-mdformat --no-validate your-file.md
-
-# Create an alias for persistence
-alias mdformat="mdformat --no-validate"
+mdformat your-file.md
 ```
-
-Since mdformat-tight-lists is an opinionated plugin that greedily converts loose lists to tight lists and potentially changes the semantics of HTML output, mdformat with this plugin installed should be run with the `--no-validate` flag to avoid seeing mdformat's validation errors. 
 
 ### Features
 
-- **Greedy Tight Lists**: Converts loose lists to tight lists by removing empty lines between list items of the same type
-- **"Type Safety"**: Formatting enforces empty lines between ordered and unordered list items
-- **Multi-Paragraph Exception**: Enforces loose lists if at least one item contains multiple paragraphs
-- **Opinionated Whitespace**: Use this plugin if you lament the loss of vertical information density and never understood why people wrap all their list items in paragraph tags
+- **Smart List Formatting**: Automatically creates tight lists by removing unnecessary empty lines
+- **List Type Detection**: Different top-level markers (`-`, `*`, `+`) are treated as separate lists
+- **Nested List Handling**: Properly handles transitions between ordered and unordered lists
+- **Multi-Paragraph Support**: Preserves loose formatting when list items contain multiple paragraphs
+- **Frontmatter Compatible**: Works seamlessly with YAML frontmatter
 
 ### Examples
 
@@ -71,64 +63,61 @@ Since mdformat-tight-lists is an opinionated plugin that greedily converts loose
 
 ## Development
 
-This package utilises [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
-
-To install these development dependencies:
+### Setup
 
 ```bash
-pip install tox
+# Clone the repository
+git clone https://github.com/jdmonaco/mdformat-tight-lists.git
+cd mdformat-tight-lists
+
+# Install development environment with uv
+uv sync
 ```
 
-To run the tests:
+### Running Tests
 
 ```bash
-tox
+# Run all tests
+uv run pytest
+
+# Run with coverage
+uv run pytest --cov=mdformat_tight_lists
+
+# Run tests verbosely
+uv run pytest -v
 ```
 
-and with test coverage:
+### Adding Tests
+
+To add new test cases, edit `tests/fixtures.md` following the existing format:
+- Test title
+- Input markdown (between dots)
+- Expected output (between dots)
+
+## Publishing
+
+This package is automatically published to PyPI when a version tag is pushed:
 
 ```bash
-tox -e py37-cov
+# Update version in mdformat_tight_lists/__init__.py
+# Commit and push changes
+git add -A
+git commit -m "Bump version to X.Y.Z"
+git push
+
+# Create and push a version tag
+git tag vX.Y.Z
+git push origin vX.Y.Z
 ```
 
-The easiest way to write tests, is to edit tests/fixtures.md
+The GitHub Actions workflow will automatically build and publish to PyPI.
 
-To run the code formatting and style checks:
+## License
 
-```bash
-tox -e py37-pre-commit
-```
+MIT - see LICENSE file for details.
 
-or directly
-
-```bash
-pip install pre-commit
-pre-commit run --all
-```
-
-To run the pre-commit hook test:
-
-```bash
-tox -e py37-hook
-```
-
-## Publish to PyPi
-
-Either use flit directly:
-
-```bash
-pip install flit
-flit publish
-```
-
-or trigger the GitHub Action job, by creating a release with a tag equal to the version, e.g. `v0.0.1`.
-
-Note, this requires generating an API key on PyPi and adding it to the repository `Settings/Secrets`, under the name `PYPI_KEY`.
-
-[ci-badge]: https://github.com/jdmonaco/mdformat-tight-lists/workflows/CI/badge.svg?branch=master
-[ci-link]: https://github.com/jdmonaco/mdformat-tight-lists/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush
-[cov-badge]: https://codecov.io/gh/jdmonaco/mdformat-tight-lists/branch/master/graph/badge.svg
-[cov-link]: https://codecov.io/gh/jdmonaco/mdformat-tight-lists
+[ci-badge]: https://github.com/jdmonaco/mdformat-tight-lists/workflows/CI/badge.svg?branch=main
+[ci-link]: https://github.com/jdmonaco/mdformat-tight-lists/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-tight-lists.svg
 [pypi-link]: https://pypi.org/project/mdformat-tight-lists
 
