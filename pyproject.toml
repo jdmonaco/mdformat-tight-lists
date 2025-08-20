@@ -25,6 +25,7 @@ requires-python = ">=3.10"
 dependencies = [
     "mdformat>=0.7.0",
     "mdformat-frontmatter>=2.0.0",
+    "pytest>=8.4.1",
 ]
 dynamic = ["version", "description"]
 

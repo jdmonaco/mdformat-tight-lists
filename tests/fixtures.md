@@ -173,3 +173,90 @@ mixed single and multi paragraph items
 
 - Simple item 2
 .
+nested to top-level marker change
+.
+- Dash list
+  - Nested dash
+  - Another nested
+* Asterisk list at top level
+.
+- Dash list
+  - Nested dash
+  - Another nested
+
+* Asterisk list at top level
+.
+
+deep nesting all tight
+.
+- Level 1
+  * Level 2 asterisk
+    1. Level 3 ordered
+    2. Another ordered
+    - Level 3 dash
+  * Back to level 2
+- Back to level 1
+.
+- Level 1
+  - Level 2 asterisk
+    1. Level 3 ordered
+    2. Another ordered
+    - Level 3 dash
+  - Back to level 2
+- Back to level 1
+.
+
+marker normalization nested
+.
+1. Ordered parent
+   - Unordered child
+   - Another unordered
+2. Another ordered
+   + Plus marker nested
+   + Still converted to dash
+.
+1. Ordered parent
+   - Unordered child
+   - Another unordered
+2. Another ordered
+   - Plus marker nested
+   - Still converted to dash
+.
+
+binary marker alternation
+.
+- Dash list item
+- Another dash item
+* Asterisk list (alternates)
+* Another asterisk
++ Plus list (becomes dash)
++ Another plus
+.
+- Dash list item
+- Another dash item
+
+* Asterisk list (alternates)
+* Another asterisk
+
+- Plus list (becomes dash)
+- Another plus
+.
+
+complex alternation pattern
+.
+- First dash list
+- Another dash
++ Plus list (will become asterisk for alternation)
++ Another plus
+* Original asterisk (will become dash for alternation)
+* Another asterisk
+.
+- First dash list
+- Another dash
+
+* Plus list (will become asterisk for alternation)
+* Another plus
+
+- Original asterisk (will become dash for alternation)
+- Another asterisk
+.
