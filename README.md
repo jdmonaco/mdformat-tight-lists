@@ -3,6 +3,9 @@
 [![Build Status][ci-badge]][ci-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
+> [!NOTE]
+> This plugin's functionality has been integrated into [mdformat-space-control](https://github.com/jdmonaco/mdformat-space-control), which combines tight list formatting with EditorConfig support. Consider using mdformat-space-control for new projects.
+
 An [mdformat](https://github.com/executablebooks/mdformat) plugin that formats Markdown lists to be tight (no empty lines between list items) following mdformat-style rules.
 
 ## Installation
