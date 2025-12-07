@@ -100,8 +100,8 @@ To add new test cases, edit `tests/fixtures.md` following the existing format:
 
 MIT - see LICENSE file for details.
 
-[ci-badge]: https://github.com/jdmonaco/mdformat-tight-lists/workflows/CI/badge.svg?branch=main
-[ci-link]: https://github.com/jdmonaco/mdformat-tight-lists/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
+[ci-badge]: https://github.com/jdmonaco/mdformat-tight-lists/actions/workflows/tests.yml/badge.svg?branch=main
+[ci-link]: https://github.com/jdmonaco/mdformat-tight-lists/actions/workflows/tests.yml
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-tight-lists.svg
 [pypi-link]: https://pypi.org/project/mdformat-tight-lists
 
